@@ -40,6 +40,4 @@ public class BalancedParentheses {
 		}
 		return stack.isEmpty();
 	}
-
-
 }
