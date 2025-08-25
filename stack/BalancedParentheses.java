@@ -5,38 +5,41 @@ import java.util.*;
 public class BalancedParentheses {
 
 	public static void main(String[] args) {
-		Scanner sc=new Scanner(System.in);
+		Scanner scanner = new Scanner(System.in);
 		System.out.println("Enter the string: ");
-		String st=sc.next();//{[()]}
-		boolean rs=isBalance(st);
-		if(rs) {
-			System.out.println("String is balanced");//String is balanced
-		}else {
+		String string = scanner.next();
+		boolean result = isBalance(string);
+		if(result) {
+			System.out.println("String is balanced");
+		}
+		else {
 			System.out.println("String is not balanced");
 		}
-		sc.close();
+		scanner.close();
 	}
 
-	static boolean isBalance(String st) {
-		if(st.length()%2==1)
+	static boolean isBalance(String string) {
+		if(string.length() % 2 == 1)
 			return false;
 
-		Stack<Character> s=new Stack<Character>();
-		for (Character ch : st.toCharArray()){
-			if(ch=='{'||ch=='('|| ch=='['){
-				s.push(ch);
+		Stack<Character> stack=new Stack<Character>();
+		for (Character character : string.toCharArray()){
+
+			if(character=='{'||character=='('|| character=='['){
+				stack.push(character);
 			}
 			else{
-				if(s.isEmpty()) {
+				if(stack.isEmpty())
 					return  false;
-				}
 
-				Character pch=s.pop();
-				if(ch=='}'&&pch!='{'||ch==')'&&pch!='('||ch==']'&&pch!='[') {
+				Character popedCharacter=stack.pop();
+
+				if(character == '}' && popedCharacter != '{' || character == ')' && popedCharacter != '(' || character == ']' && popedCharacter != '[')
 					return false;
-				}
 			}
 		}
-		return s.isEmpty();
+		return stack.isEmpty();
 	}
+
+
 }
